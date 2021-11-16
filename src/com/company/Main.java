@@ -22,12 +22,13 @@ public class Main {
                 int option = new Scanner(System.in).nextInt();
                 switch (option) {
                     case 1: {
-                        MatchesPlayed matches = new MatchesPlayed();
+                        Matches matches = new Matches();
                         Map<Integer, Integer> data = matches.matchesPlayed();
                         System.out.println(data);
                         break;
                     }
                     case 2: {
+
                         break;
                     }
                     case 3:

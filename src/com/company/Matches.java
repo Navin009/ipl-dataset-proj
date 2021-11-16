@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-public class MatchesPlayed {
+public class Matches {
     public Map<Integer, Integer> matchesPlayed() {
         Map<Integer, Integer> matches = new TreeMap<>();
         try {
