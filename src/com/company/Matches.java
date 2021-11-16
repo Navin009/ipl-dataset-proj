@@ -1,10 +1,7 @@
 package com.company;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Matches {
     public Map<Integer, Integer> matchesPlayed() {
@@ -54,10 +51,47 @@ public class Matches {
                 }
             }
 
+
         } catch (Exception e) {
             System.out.println("Matches File, Error Class -> " + e.getClass().getName() + "Message -> " + e.getMessage());
             return null;
         }
         return matchesWon;
+    }
+
+    public HashMap<String, Integer> extraRuns() {
+        HashMap<String, Integer> extraRuns = new HashMap<>();
+        ArrayList<Integer> matchIds = new ArrayList<>();
+        try {
+            File file = new File("src/com/company/dataset/matches.csv");
+            Scanner scanner = new Scanner(file);
+            scanner.nextLine();
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] lineSplit = line.split(",");
+                if(lineSplit[1].equals("2016")) {
+                    matchIds.add(Integer.parseInt(lineSplit[0]));
+                }
+            }
+            file = new  File("src/com/company/dataset/deliveries.csv");
+            scanner = new Scanner(file);
+            scanner.nextLine();
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] lineSplit = line.split(",");
+                if(matchIds.contains(Integer.parseInt(lineSplit[0]))) {
+                    if (extraRuns.containsKey(lineSplit[2])) {
+                        extraRuns.put(lineSplit[2], extraRuns.get(lineSplit[2]) + Integer.parseInt(lineSplit[16]));
+                    }else {
+                        extraRuns.put(lineSplit[2], Integer.parseInt(lineSplit[16]));
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Matches File, Error Class -> " + e.getClass().getName() + "Message -> " + e.getMessage());
+        }
+        return extraRuns;
     }
 }

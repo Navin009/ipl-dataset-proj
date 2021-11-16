@@ -39,6 +39,9 @@ public class Main {
                         break;
                     }
                     case 3:
+                        Matches matches = new Matches();
+                        Map<String, Integer> extraRuns = matches.extraRuns();
+                        System.out.println(extraRuns);
                         break;
                     case 4:
                         break;
