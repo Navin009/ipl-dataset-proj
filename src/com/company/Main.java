@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -28,7 +30,12 @@ public class Main {
                         break;
                     }
                     case 2: {
-
+                        Matches matches = new Matches();
+                        Map<String, HashMap<Integer, Integer>> won = matches.matchesWon();
+                        Iterator<Map.Entry<String, HashMap<Integer, Integer>>> itr = won.entrySet().iterator();
+                        while (itr.hasNext()) {
+                            System.out.println(itr.next());
+                        }
                         break;
                     }
                     case 3:
@@ -49,7 +56,7 @@ public class Main {
                 System.in.read();
             }
         } catch (Exception e) {
-            System.out.println("File not found -> " + e.getMessage());
+            System.out.println("Main File, Error Class -> " + e.getClass().getName() + " Message -> " + e.getMessage());
         }
     }
 }
