@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.File;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +22,9 @@ public class Main {
                 int option = new Scanner(System.in).nextInt();
                 switch (option) {
                     case 1: {
+                        MatchesPlayed matches = new MatchesPlayed();
+                        Map<Integer, Integer> data = matches.matchesPlayed();
+                        System.out.println(data);
                         break;
                     }
                     case 2: {
@@ -38,10 +42,10 @@ public class Main {
                     }
                     default: {
                         System.out.println("Invalid option Enter to Continue...");
-                        System.in.read();
                         break;
                     }
                 }
+                System.in.read();
             }
         } catch (Exception e) {
             System.out.println("File not found -> " + e.getMessage());
